@@ -1,0 +1,24 @@
+service: gymBro-api-sls
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: Pippin
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::062156450918:role/gymBroAdmin
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+functions:
+  helloGymBro:
+    handler: functions/helloGymBro/index.handler
+    events:
+      - httpApi:
+          path: '/helloGymBro'
+          method: GET
