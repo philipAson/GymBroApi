@@ -22,3 +22,41 @@ functions:
       - httpApi:
           path: '/helloGymBro'
           method: GET
+  postGymBro:
+    handler: functions/postGymBroDb/index.handler
+    events:
+      - httpApi:
+          path: '/postGymBroDb'
+          method: POST
+  signUp:
+    handler: functions/signUp/index.handler
+    events:
+      - httpApi:
+          path: '/auth/signUp'
+          method: POST
+
+resources:
+  Resources:
+    gymBroDB:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: gymBroDB
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    
+    accountsGymBroDB:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: accountsGymBroDB
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
