@@ -40,6 +40,12 @@ functions:
       - httpApi:
           path: '/auth/login'
           method: POST
+  addExercise:
+    handler: functions/addExercise/index.handler
+    events:
+      - httpApi:  
+          path: '/addExercise'
+          method: POST
 
 resources:
   Resources:
