@@ -46,6 +46,18 @@ functions:
       - httpApi:  
           path: '/addExercise'
           method: POST
+  addWorkout:
+    handler: functions/addWorkout/index.handler
+    events:
+      - httpApi:
+          path: '/addWorkout'
+          method: POST
+  getWorkouts:
+    handler: functions/getWorkouts/index.handler
+    events:
+      - httpApi:
+          path: '/getWorkouts'
+          method: GET
 
 resources:
   Resources:

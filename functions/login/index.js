@@ -36,6 +36,7 @@ async function login(email, password) {
     if (!validPassword) 
         return {success: false, message: 'Incorrect email or password'};
 
+    // Put secret in a difrent file and .gitIgnore that file and change the secret in middleware/auth.js
     const token = jwt.sign({email: user.email, userId: user.userId}, 'secret', {expiresIn: 3600000});
 
     return {success: true, message: 'Login successful', token: token};
